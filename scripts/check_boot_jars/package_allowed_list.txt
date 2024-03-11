@@ -274,3 +274,11 @@ org\.ifaa\.android\.manager.*
 
 # Lineage HALs
 vendor\.lineage\..*
+
+# OnePlus
+com.oplus.*
+net.oneplus.*
+oplus.*
+vendor.oplus.*
+com.oneplus.*
+vendor.oneplus.*
