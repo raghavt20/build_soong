@@ -58,6 +58,11 @@ var (
 	arm64Cppflags = []string{}
 
 	arm64CpuVariantCflags = map[string][]string{
+		"cortex-a520": []string{
+			// Use the cortex-a510 since it is smilar to
+			// cortex-a520 and binutils don't support a520.
+			"-mcpu=cortex-a510",
+		},
 		"cortex-a510": []string{
 			"-mcpu=cortex-a510",
 		},
@@ -124,6 +129,7 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("Arm64Armv82ADotprodCflags", arm64ArchVariantCflags["armv8-2a-dotprod"])
 	exportedVars.ExportStringListStaticVariable("Arm64Armv9ACflags", arm64ArchVariantCflags["armv9-a"])
 
+	exportedVars.ExportStringListStaticVariable("Arm64CortexA520Cflags", arm64CpuVariantCflags["cortex-a520"])
 	exportedVars.ExportStringListStaticVariable("Arm64CortexA510Cflags", arm64CpuVariantCflags["cortex-a510"])
 	exportedVars.ExportStringListStaticVariable("Arm64CortexA53Cflags", arm64CpuVariantCflags["cortex-a53"])
 	exportedVars.ExportStringListStaticVariable("Arm64CortexA55Cflags", arm64CpuVariantCflags["cortex-a55"])
@@ -144,6 +150,7 @@ var (
 	}
 
 	arm64CpuVariantCflagsVar = map[string]string{
+		"cortex-a520": "${config.Arm64CortexA520Cflags}",
 		"cortex-a510": "${config.Arm64CortexA510Cflags}",
 		"cortex-a53": "${config.Arm64CortexA53Cflags}",
 		"cortex-a55": "${config.Arm64CortexA55Cflags}",
